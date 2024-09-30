@@ -4,5 +4,7 @@ from league import views
 app_name = 'league'
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('gw1-19/', views.gw1_19, name='gw1-19'),
+    path('gw20-38/', views.gw20_38, name='gw20-38'),
 ]
+

@@ -1,0 +1,118 @@
+table, th, td {
+    border: 5px solid rgb(0, 255, 135);
+    border-collapse: collapse;  
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+.out {
+    background-color: red; 
+}
+
+#player{
+    font-weight:bold;
+}
+
+.winner{
+    background-color: lawngreen; 
+    font-weight: bold;
+}
+
+body {
+    background-color: #37003c;
+    color:  rgb(0, 255, 135);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+    max-width: 400px; 
+    background-color: #37003c;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(0, 255, 135);
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; 
+    margin-bottom: 15px;
+}
+
+label {
+    width: 30%; 
+    text-align: right;
+    margin-right: 10px;
+    color: rgb(0, 255, 135);
+}
+
+select, input[type="submit"] {
+    width: 65%; 
+    padding: 8px;
+    border: 2px solid rgb(0, 255, 135);
+    border-radius: 5px;
+    background-color: #37003c;
+    color: white;
+    text-align: left;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    float:right;
+    margin-left: 140px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background-color: rgb(0, 255, 135);
+    color: #37003c;
+    font-weight: bold;
+    text-align: center;
+}
+
+.other_page {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.other_page a {
+    text-decoration: none;  
+}
+
+.other_page button {
+    padding: 10px 20px;
+    background-color: rgb(0, 255, 135);
+    border: 2px solid rgb(0, 255, 135);
+    color: #37003c;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.other_page button:hover {
+    background-color: #37003c;
+    color: rgb(0, 255, 135);
+    border: 2px solid rgb(0, 255, 135);
+}

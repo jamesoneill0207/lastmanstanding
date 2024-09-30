@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+    {% load static %}
+    
+<head>
+    <title>Last Man Standing - EPL</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <script src="{% static 'script.js' %}" ></script> 
+</head>
+
+<body>
+
+    <h1>Last Man Standing Predictions</h1>
+
+    <div class="form-container">
+        {% if winner == False %}
+            <form method="post" action="">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="player">Player:</label>
+                    <select name="player" id="player">
+                        <option value=""></option>
+                        {% for player in players %}
+                            {% if player.is_standing %}
+                                <option value="{{ player.name }}">{{ player }}</option> 
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="team">Team:</label>
+                    <select name="team" id="team">
+                        <option value=""></option>
+                            {% for team in all_teams %}
+                                {% if team.hidden == False %}
+                                    <option value="{{ team.name }}">{{ team.name }}</option>
+                                {% endif %} 
+                            {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="gameweek">GW:</label>
+                    <select id="gameweekSelect" name="gameweek">
+                        <option value=""></option>
+                        {% for gw in gameweeks %}
+                            <option value="{{ gw.number }}" data-deadline="{{ gw.deadline|date:'Y-m-d\\TH:i:s' }}">{{ gw.number }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="form-group submit-btn">
+                    <input type="submit" name="submit" value="Pick Team!">
+                </div>
+
+            {{error}}
+            </form>
+        {% endif %} 
+    </div>
+
+    <div class ="other_page">
+        {% block body_block  %}
+
+        {% endblock %}
+    </div>
+    
+    <table>
+        <thead>
+            <tr id="heading-row">
+                <th>Player Name</th>
+                {% for gw in gameweeks %}
+                    <th >GW {{ gw.number }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediction in predictions %}
+                <tr id="content-row">
+                    {% for content in prediction %}
+                        {% if content.is_standing == False %}
+                            <td class='out' id="player">{{ content }}</td> 
+                        {% elif content.winner == True %}
+                            <td class='winner' id="player" >{{ content }}</td>
+                        {% elif content.is_standing == True%}
+                            <td id="player">{{ content }}</td>
+                        {% else %}
+                            <td>{{ content }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
+
+

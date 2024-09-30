@@ -1,3 +1,9 @@
 from django.contrib import admin
+from league.models import Team, PlayerSelection, Gameweek, Player, TeamResult
 
-# Register your models here.
+admin.site.register(Player)
+admin.site.register(Team)
+admin.site.register(Gameweek)
+admin.site.register(PlayerSelection)
+admin.site.register(TeamResult)
+
