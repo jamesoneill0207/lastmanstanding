@@ -1,11 +1,8 @@
+import datetime
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
-
-
-class LastManStanding(models.Model):
-    winner = models.BooleanField(default=False)
 
 class Team(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -17,6 +14,9 @@ class Team(models.Model):
 class Gameweek(models.Model):
     number = models.PositiveIntegerField(unique=True)
     deadline = models.DateTimeField()
+    results_in = models.DateTimeField()
+    all_results = models.BooleanField(default=False)
+    weeks_to_ignore = models.BooleanField(default=False)
     
     def __str__(self):
         return f"Gameweek {self.number}"

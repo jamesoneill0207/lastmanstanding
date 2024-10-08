@@ -46,7 +46,7 @@
                     <select id="gameweekSelect" name="gameweek">
                         <option value=""></option>
                         {% for gw in gameweeks %}
-                            <option value="{{ gw.number }}" data-deadline="{{ gw.deadline|date:'Y-m-d\\TH:i:s' }}">{{ gw.number }}</option>
+                            <option value="{{ gw.number }}">{{ gw.number }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -70,7 +70,7 @@
         <thead>
             <tr id="heading-row">
                 <th>Player Name</th>
-                {% for gw in gameweeks %}
+                {% for gw in gameweeks_range %}
                     <th >GW {{ gw.number }}</th>
                 {% endfor %}
             </tr>

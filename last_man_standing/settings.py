@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,19 +21,20 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  
 
-
+API_KEY = env('API_KEY', default='No API Key Found')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&t4(zvh#u%_9q%t^j*49e@ife%3o!6bo-^siqkgx5en7o02v0!'
+SECRET_KEY = env('SECRET_KEY', default='No Secret Key Found')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -129,3 +133,4 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
